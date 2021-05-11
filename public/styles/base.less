@@ -1,0 +1,35 @@
+@import './variable.less';
+
+.header {
+    position: relative;
+    height: 70px;
+    text-align: center;
+    font-size: 0;
+    .text {
+        display: inline-block;
+        vertical-align: top;
+        line-height: 70px;
+        font-size: @font-size-large;
+        color: @text-2;
+    }
+
+    .switch {
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        font-size: 14px;
+        line-height: 70px;
+        height: 70px;
+        vertical-align: middle;
+    }
+}
+
+.hello {
+    .text {
+        display: inline-block;
+        vertical-align: top;
+        line-height: 70px;
+        font-size: @font-size-large;
+        color: @text-2;
+    }
+}
