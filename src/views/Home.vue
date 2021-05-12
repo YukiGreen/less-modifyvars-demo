@@ -7,6 +7,9 @@
         <input type="checkbox" class="switch-input"  @click="changeTheme" />
         <span class="switch-core"></span>
       </div>
+      <div class="avatar">
+        <img :src="avatar" alt="" />
+      </div>
     </div>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
@@ -24,20 +27,28 @@ export default {
   },
   data () {
     return {
-      theme: true
+      theme: true, // false深色主题
+      avatar: ''
     }
   },
   methods: {
     changeTheme () {
-      console.log(this.theme, 'yyyy', window.less)
       this.theme = !this.theme
+      this.setThemeValue(this.theme)
       // 调用 `less.modifyVars` 方法来改变变量值
       // 定义variable.js是因为如果直接将less变量放在modifyVars中切换的效果只会生效一次，所以根据切换的状态使用对应的less变量。
       window.less.modifyVars(this.theme ? lightTheme : darkTheme)
+    },
+    setThemeValue (theme) {
+      this.avatar = require(`@/assets/img/logo-${theme ? 'light' : 'dark'}.png`)
     }
+  },
+  created () {
+    this.setThemeValue(this.theme)
   }
 }
+
 </script>
 <style lang="less">
-// @import '../../public/styles/index.less';
+// @import '../../public/styles/index.less'; // 在这里引用样式会失效
 </style>
